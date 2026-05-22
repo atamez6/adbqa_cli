@@ -1,16 +1,13 @@
 import subprocess
 
 
-def check_device_id(**args):
-    devce_id= args[device_id]
-    if device_id:
-        device_id = device_id.strip().lower()
-    if not device_id:
-        print("Error: device: id missed")
 
-def adb_runner_comm(**args):
+def adb_runner_comm(command):
     try:
-        subprocess.run(f"adb {args["command"]} {args["device_id"]}",capture_output=True, text=True)
-    except Exception as error_connecting:
-        print("error connecting")
-        return 0
+        response_stdout =subprocess.run(f'{command}',capture_output=True, text=True,shell=True)
+        command_stdout= response_stdout.stdout
+        print(command_stdout)
+        return command_stdout
+    except Exception as error:
+        print("error runnign command")
+        return None
