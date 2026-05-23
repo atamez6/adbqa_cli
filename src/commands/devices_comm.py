@@ -9,9 +9,8 @@ class Devices_commands:
 
     def send_command(self,command):
         try:
-            command_stdout = am.adb_runner_comm(command)
-            print(f"command stdout => {command_stdout}")
-            return True
+            command_return = am.adb_runner_comm(command)
+            return print(f"command return => {command_return}")
         
         except Exception as e:
             print(e)
@@ -19,31 +18,31 @@ class Devices_commands:
 
     def check_device_id(self,device_id):
         if not device_id:
-            print("Error: device: id missed")
-            return None
+            raise ValueError("device_id error or missing")
         
-        device_id = device_id.strip()
-        return device_id
+        return device_id.strip()
 
     def adb_devices(self):
         
         devices_commands= "adb devices"
-        self.send_command(devices_commands)
-        return True
+        return self.send_command(devices_commands)
+   
 
 
     def adb_connect(self,device_id):
         device_id = self.check_device_id(device_id)
+
         connect_commands= f"adb connect {device_id}"
-        self.send_command(connect_commands)
-        return True
+
+        return self.send_command(connect_commands)
+
 
 
     def adb_disconnect(self,device_id):
         device_id = self.check_device_id(device_id)
         disconnect_commands= f"adb disconnect {device_id}"
-        self.send_command(disconnect_commands)
-        return True
+        return self.send_command(disconnect_commands)
+
 
 
 
@@ -87,12 +86,12 @@ class Devices_commands:
 
 
 if __name__ == "__main__":
-   device_id="192.168.0.108:5555"
+   device_id="192 d68.0.108:5555"
    run = Devices_commands()
    #run.adb_devices(device_id)
-   run.adb_disconnect(device_id)
+   #run.adb_disconnect(device_id)
    run.adb_connect(device_id)
-   run.adb_devices()
+   #run.adb_devices()
 
    '''
    en devices ver el estado, wait, for device, etc
