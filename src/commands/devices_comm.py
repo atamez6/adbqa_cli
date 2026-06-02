@@ -50,8 +50,8 @@ class Devices_commands:
     def adb_logcat(self,device_id):
         device_id = self.check_device_id(device_id)
         disconnect_commands= f"adb disconnect {device_id}"
-        return self.send_command(disconnect_commands)
-        #adb -s <device_id> logcat -d
+       
+        adb -s <device_id> logcat -d
         #print head20 en pantalla, full logs as txt
         #logs as file, function read file, search for events, top wef,crash
         #i can search a word in the log file as "claro" 
