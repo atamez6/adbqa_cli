@@ -1,4 +1,5 @@
 from ..utils_tools import adb_main_runner as am
+import datetime
 
 class Devices_commands:
 
@@ -49,9 +50,9 @@ class Devices_commands:
 
     def adb_logcat(self,device_id):
         device_id = self.check_device_id(device_id)
-        disconnect_commands= f"adb disconnect {device_id}"
+        logcat_commands= f"adb logcat > {datetime.now().time()}.txt"
        
-     
+        
         #print head20 en pantalla, full logs as txt
         #logs as file, function read file, search for events, top wef,crash
         #i can search a word in the log file as "claro" 
