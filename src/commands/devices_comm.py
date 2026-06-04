@@ -52,12 +52,12 @@ class Devices_commands:
         device_id = self.check_device_id(device_id)
         logcat_commands= f"adb logcat > {datetime.now().time()}.txt"
        
-        
+        return logcat_commands
         #print head20 en pantalla, full logs as txt
         #logs as file, function read file, search for events, top wef,crash
         #i can search a word in the log file as "claro" 
         #todo con singularidad y separado,,,,
-        pass
+        
 
     def adb_memory(self,device_id):
         pass
